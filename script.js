@@ -27,25 +27,13 @@ function appendMessage(message, sender) {
     chatBox.scrollTop = chatBox.scrollHeight;
 }
 
-async function getBotResponse(userInput) {
-    try {
-        const response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
-            },
-            body: JSON.stringify({
-                prompt: userInput,
-                max_tokens: 150
-            })
-        });
+function getBotResponse(userInput) {
+  
 
-        const data = await response.json();
-        const botResponse = data.choices[0].text.trim();
-        appendMessage(botResponse, 'bot');
-    } catch (error) {
-        console.error('Erro:', error);
-        appendMessage('Desculpe, ocorreu um erro ao obter a resposta.', 'bot');
-    }
+    const botResponse = generateBotResponse(userInput);
+    appendMessage(botResponse, 'bot');
+}
+
+function generateBotResponse(userInput) {
+    return "A resposta do bot para '" + userInput + "' poderia ser aqui.";
 }
