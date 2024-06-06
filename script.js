@@ -28,12 +28,15 @@ function appendMessage(message, sender) {
 }
 
 function getBotResponse(userInput) {
-  
-
-    const botResponse = generateBotResponse(userInput);
+    const responses = [
+        'Desculpe, não entendi sua pergunta.',
+        'Pode repetir, por favor?',
+        'Estou aqui para ajudar!',
+        'Isso é interessante.',
+        'Me conte mais sobre isso.',
+        'Poderia explicar melhor?'
+    ];
+    const botResponse = responses[Math.floor(Math.random() * responses.length)];
     appendMessage(botResponse, 'bot');
 }
 
-function generateBotResponse(userInput) {
-    return "A resposta do bot para '" + userInput + "' poderia ser aqui.";
-}
